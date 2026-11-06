@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3조 과제 지시서</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--bg:#fafaf8;--ink:#141414;--g7:#3d3d3d;--g5:#757575;--g3:#d6d6d2;--g2:#ececE8;--acc:#0071bb;--hot:#d9480f;--mono:ui-monospace,"SF Mono",Menlo,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0e0e;--ink:#ececec;--g7:#c4c4c4;--g5:#8a8a8a;--g3:#2e2e2e;--g2:#1c1c1c;--acc:#3fa9f5;--hot:#f05a24}}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:15.5px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word;font-variant-numeric:tabular-nums}
+header{border-bottom:1px solid var(--ink)}
+.hd{max-width:860px;margin:0 auto;padding:40px 24px 22px}
+.tag{font-family:var(--mono);font-size:12px;color:var(--g5);letter-spacing:.02em}
+h1{font-size:30px;line-height:1.3;margin:10px 0 18px;letter-spacing:-.02em;text-wrap:balance}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600}
+.links a:hover{background:var(--ink);color:var(--bg)}
+.links a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc)}
+main{max-width:860px;margin:0 auto;padding:8px 24px 80px}
+main>p:first-child{font-size:17px;color:var(--ink);margin:28px 0 8px}
+h2{font-size:21px;margin:56px 0 10px;padding-top:14px;border-top:1px solid var(--g3);letter-spacing:-.01em}
+h3{font-size:16.5px;margin:34px 0 6px}
+p,li{color:var(--g7)}
+a{color:var(--acc)}
+code{font-family:var(--mono);font-size:.86em;background:var(--g2);padding:1px 5px}
+ul,ol{padding-left:22px}
+li{margin:3px 0}
+li.task{list-style:none;margin-left:-22px;display:flex;gap:10px;align-items:baseline}
+.cb{flex:none;width:12px;height:12px;border:1.5px solid var(--g5);transform:translateY(1px)}
+.tw{overflow-x:auto;margin:14px 0;border-top:1px solid var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th{text-align:left;font-weight:600;font-size:12.5px;color:var(--g5);padding:9px 12px 9px 0;border-bottom:1px solid var(--g3)}
+td{padding:10px 12px 10px 0;border-bottom:1px solid var(--g3);vertical-align:top;color:var(--ink)}
+td:first-child{font-weight:600;white-space:nowrap}
+.dia{margin:16px 0 8px}
+.dia svg{width:100%;height:auto;display:block;font-family:Pretendard,sans-serif}
+.dia figcaption{font-size:13.5px;color:var(--g5);margin-top:8px}
+.bx{fill:none;stroke:var(--g5);stroke-width:1.25}
+.bx.main{fill:var(--acc);fill-opacity:.1;stroke:var(--acc);stroke-width:2}
+.nm{font-size:13.5px;font-weight:700;fill:var(--ink)}
+.ln{font-size:12px;fill:var(--g5)} .ln.ink{fill:var(--ink)}
+.wn{font-size:12px;font-weight:700;fill:var(--hot)}
+.lb{font-size:11.5px;fill:var(--g5)}
+.cn path{fill:none;stroke:var(--g5);stroke-width:1.25} .ah{fill:var(--g5)}
+footer{max-width:860px;margin:0 auto;padding:0 24px 40px;font-family:var(--mono);font-size:12px;color:var(--g5)}
+@media (max-width:600px){.hd{padding:28px 16px 18px} main{padding:4px 16px 60px} h1{font-size:24px} footer{padding:0 16px 32px}}
+</style></head><body>
+<header><div class="hd"><div class="tag">산학 프로젝트 · 3조 · 냉장 컨테이너 온도 예측 및 제어</div>
+<h1>3조 과제 지시서 — 가상 PoC · 실물 실증</h1>
+<div class="links"><a href="./sim/">시뮬레이터 열기</a><a href="#week1">1주차 과제</a><a href="#week2">2–4주차 과제</a></div></div></header>
+<main>
+<p>1주차는 가상 시뮬레이터 데이터로 온도 예측·이상감지 PoC 완료, 2–4주차는 같은 구조를 실물로 제작해 실증함. 두 단계의 CSV 형식이 같아서 1주차 모델을 실측 데이터에 그대로 적용하는 것이 핵심임.</p>
+<h2>일정 한눈에</h2>
+<p>1주차는 소프트웨어만으로 과업 전체 흐름을 한 번 완주하는 단계, 2–4주차는 그 흐름을 실제 장치 위에서 다시 돌리는 단계임.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>주차</th>
+<th>목표</th>
+<th>산출물</th>
+<th>완료 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1주차 · 가상 PoC</td>
+<td>시뮬레이터 데이터로 예측·이상감지·제어 로직 검증</td>
+<td>데이터셋(CSV), 노트북, 결과표, 5분 발표</td>
+<td>테스트 MAE가 단순 기준선보다 낮음 · 팬 고장 구간 탐지</td>
+</tr>
+<tr>
+<td>2–4주차 · 실물 실증</td>
+<td>같은 구조를 실물로 제작, 실측 데이터 수집 후 1주차 모델 적용</td>
+<td>장치 사진·배선도, 실측 CSV, 시뮬 대비 비교표, 제어 데모 영상</td>
+<td>1 Hz 연속 수집 2시간 이상 · 목표 온도 유지 데모</td>
+</tr>
+</tbody>
+</table></div>
+<h2>공통 사항</h2>
+<p>시뮬레이터와 실물 장치는 같은 CSV 컬럼을 1초 간격으로 기록함. 컬럼명과 단위 변경 금지.</p>
+<ul>
+<li>시뮬레이터: <a href="./sim/">미니 리퍼 시뮬레이터</a> — 40 × 30 × 28 cm EPS 박스, TEC1-12706 펠티어, DS18B20 센서 3개 구성을 물리 모델로 재현</li>
+<li>화면 조작: 뚜껑 클릭 개폐, 화물 투입·반출(최대 16개), 팬 고장, 센서 드리프트, 배속 0–600×</li>
+<li>대량 생성: 오른쪽 [데이터 생성] 탭의 자동 생성(길이 6·24·72 h, 제어 방식, 시드, 고장 구간 포함 여부)</li>
+<li>권장 브라우저: PC 크롬 또는 엣지 (3D 화면 사용)</li>
+</ul>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>컬럼</th>
+<th>내용</th>
+<th>단위·값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ts</code></td>
+<td>기록 시각</td>
+<td>UTC ISO 8601</td>
+</tr>
+<tr>
+<td><code>t_in_top</code></td>
+<td>고내 상부 온도</td>
+<td>℃, 0.0625 단위 · 간헐적 빈칸(센서 누락)</td>
+</tr>
+<tr>
+<td><code>t_in_bottom</code></td>
+<td>고내 하부 온도 (화물 근처)</td>
+<td>℃</td>
+</tr>
+<tr>
+<td><code>t_ambient</code></td>
+<td>외기 온도</td>
+<td>℃</td>
+</tr>
+<tr>
+<td><code>door_open</code></td>
+<td>뚜껑 열림</td>
+<td>0 / 1</td>
+</tr>
+<tr>
+<td><code>pwm</code></td>
+<td>펠티어 구동 명령</td>
+<td>0–255</td>
+</tr>
+<tr>
+<td><code>current_mA</code></td>
+<td>펠티어 전류</td>
+<td>mA</td>
+</tr>
+<tr>
+<td><code>voltage_mV</code></td>
+<td>공급 전압</td>
+<td>mV</td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td>제어 방식</td>
+<td>pid · hysteresis · manual</td>
+</tr>
+<tr>
+<td><code>scenario</code></td>
+<td>구간 태그 (정답 라벨)</td>
+<td>normal · door · load · ambient · fault</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>scenario</code>는 시뮬레이터만 정답으로 기록함. 실물에서는 운용자가 실험 일지로 따로 남김.</p>
+<h3>역할 분담 (제안)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>담당</th>
+<th>1주차</th>
+<th>2–4주차</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>담당 A</td>
+<td>데이터 생성·전처리, 트리 계열 예측 모델, 이상감지</td>
+<td>회로 조립·배선, 수집 스크립트(로거)</td>
+</tr>
+<tr>
+<td>담당 B</td>
+<td>딥러닝 예측 모델, 예측 기반 제어 로직</td>
+<td>실험 시나리오 운용, 실측 데이터 모델 적용, 제어 데모</td>
+</tr>
+<tr>
+<td>공동</td>
+<td>결과표·발표</td>
+<td>시뮬 대비 비교, 최종 정리</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="week1">1주차 — 가상 PoC</h2>
+<p>목표는 10분 뒤 고내 온도 예측과 고장 탐지를 시뮬레이터 데이터로 검증하는 것임. 장비 없이 과업 전체 흐름을 한 번 완주함.</p>
+<h3>1-1. 시뮬레이터 익히기</h3>
+<p>화면에서 직접 조작하고 센서 값이 어떻게 반응하는지 확인함. 관찰 내용은 한 줄씩 기록.</p>
+<ul>
+<li class="task"><span class="cb" aria-hidden="true"></span>뚜껑 60초 열기 → 상부·하부 온도 상승폭과 회복 시간</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>화물 5개 연속 투입 → 하부 센서 변화, 상부와의 차이</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>팬 고장 주입 → 온도 상승 속도, pwm·전류 변화</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>제어 방식 pid ↔ hysteresis 전환 → 온도 파형 차이</li>
+</ul>
+<h3>1-2. 데이터 생성</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>세트</th>
+<th>설정</th>
+<th>개수</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 정상</td>
+<td>24 h · pid · 고장 없음 · 시드 1–5</td>
+<td>5</td>
+<td>학습(1–3) · 검증(4) · 테스트(5)</td>
+</tr>
+<tr>
+<td>B 제어 비교</td>
+<td>24 h · hysteresis · 시드 1–2</td>
+<td>2</td>
+<td>제어 방식이 바뀌어도 모델이 버티는지 확인</td>
+</tr>
+<tr>
+<td>C 고장</td>
+<td>72 h · pid · 고장 포함 · 시드 11–12</td>
+<td>2</td>
+<td>이상감지 평가</td>
+</tr>
+<tr>
+<td>D 수동</td>
+<td>화면에서 이벤트 직접 주입, 30분 이상 기록</td>
+<td>1</td>
+<td>현상 이해, 발표용 사례</td>
+</tr>
+</tbody>
+</table></div>
+<p>파일명은 <code>sim_&lt;세트&gt;_&lt;시드&gt;.csv</code> 형식으로 통일.</p>
+<h3>1-3. 전처리·탐색</h3>
+<ul>
+<li>센서 누락 빈칸: 짧은 공백은 선형 보간, 긴 공백 구간은 제외</li>
+<li>1초 데이터를 10초 또는 1분으로 다시 묶을지 결정 후 근거 기록</li>
+<li>특징 후보: 과거 값(1·5·10분 전), 이동 평균·기울기, pwm, door_open, t_ambient, 최근 10분 문 열린 시간</li>
+<li>그래프 3장: 하루 전체(온도·pwm), 문 열림 전후 확대, 고장 구간 확대</li>
+</ul>
+<h3>1-4. 예측 모델</h3>
+<p>예측 대상은 10분 뒤 <code>t_in_top</code>. 아래 세 가지를 같은 테스트 세트에서 비교함.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>구분</th>
+<th>모델</th>
+<th>입력</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>기준선</td>
+<td>현재 값 유지 (10분 뒤도 지금과 같다고 가정)</td>
+<td>현재 온도</td>
+</tr>
+<tr>
+<td>모델 A</td>
+<td>LightGBM 또는 RandomForest</td>
+<td>1-3 특징</td>
+</tr>
+<tr>
+<td>모델 B</td>
+<td>1D-CNN 또는 GRU (작은 크기)</td>
+<td>최근 30분 시계열 창</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>학습·검증·테스트는 시드(파일) 단위로 분리. 시간 순서를 섞은 무작위 분할 금지(미래 정보 누수)</li>
+<li>지표: MAE(℃) 전체 + 문 열림·화물 투입 구간 MAE 별도</li>
+<li>모델 크기와 CPU 1회 추론 시간도 기록 (라즈베리파이 탑재 판단 근거)</li>
+</ul>
+<h3>1-5. 이상감지</h3>
+<ul>
+<li>기본 방식: 예측 잔차(실측 − 예측)가 정해진 시간 이상 임계값을 넘으면 경보</li>
+<li>비교 방식(선택): Isolation Forest</li>
+<li>세트 C로 평가: 고장 시작부터 경보까지 지연(분), 정상 구간 하루당 오경보 횟수</li>
+<li>팬 고장과 센서 드리프트를 구분할 단서 정리 (드리프트는 상부 센서만 움직임)</li>
+</ul>
+<h3>1-6. 예측 기반 제어 로직 초안</h3>
+<ul>
+<li>규칙 예: 10분 뒤 예측이 목표 + 2 ℃ 초과 → pwm 미리 상향, 문 열림 감지 → 즉시 최대</li>
+<li>오프라인 평가: 실제 8 ℃ 초과 사건마다 예측 경보가 몇 분 먼저 울리는지 계산</li>
+<li>실제 폐루프 적용은 2–4주차 실물에서 진행</li>
+</ul>
+<h3>1주차 제출물</h3>
+<ul>
+<li class="task"><span class="cb" aria-hidden="true"></span>데이터셋 10개 (세트 A–D)</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>노트북 (전처리 · 모델 A · 모델 B · 이상감지)</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>결과표: 모델별 MAE, 구간별 MAE, 추론 시간, 탐지 지연·오경보</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>5분 발표 (그래프 3장 + 결과표 + 제어 규칙 초안)</li>
+</ul>
+<h2 id="week2">2–4주차 — 실물 실증</h2>
+<p>목표는 시뮬레이터와 같은 구조의 실물 장치로 같은 형식의 데이터를 수집하고, 1주차 모델과 제어 규칙을 실측에서 검증하는 것임. 3주를 한 단계로 묶되 주차별 진행은 아래 기준을 따름.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>주차</th>
+<th>진행</th>
+<th>해당 항목</th>
+<th>주차 말 확인</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2주차</td>
+<td>설계, 부품 수령, 조립, 단위 시험</td>
+<td>2-1 ~ 2-3</td>
+<td>센서 3개·리드 스위치·pwm 구동 동작</td>
+</tr>
+<tr>
+<td>3주차</td>
+<td>수집 로거 작성, 실측 시나리오 수집</td>
+<td>2-4 ~ 2-5</td>
+<td>시나리오 5종 실측 CSV 확보</td>
+</tr>
+<tr>
+<td>4주차</td>
+<td>시뮬레이터 대비 비교, 모델 적용, 제어 데모, 최종 정리</td>
+<td>2-6 ~ 2-7</td>
+<td>비교표·결과표·데모 영상</td>
+</tr>
+</tbody>
+</table></div>
+<p>부품은 배송 기간을 감안해 1주차 중 주문 필요.</p>
+<h3>2-1. 부품 목록 (디바이스마트 기준)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>부품</th>
+<th>사양</th>
+<th>수량</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>단열 박스</td>
+<td>EPS 아이스박스 15 L 내외</td>
+<td>1</td>
+<td>챔버</td>
+</tr>
+<tr>
+<td>펠티어 소자</td>
+<td>TEC1-12706 (12 V, 최대 약 6 A)</td>
+<td>2 (여분 1)</td>
+<td>냉각</td>
+</tr>
+<tr>
+<td>고온측 방열판 + 팬</td>
+<td>CPU 쿨러형 알루미늄 방열판, 12 V 팬</td>
+<td>1</td>
+<td>펠티어 열 배출</td>
+</tr>
+<tr>
+<td>저온측 방열판 + 내부 팬</td>
+<td>소형 알루미늄 방열판, 소형 팬</td>
+<td>1</td>
+<td>고내 냉기 순환</td>
+</tr>
+<tr>
+<td>써멀 구리스</td>
+<td>—</td>
+<td>1</td>
+<td>접촉면 열전달</td>
+</tr>
+<tr>
+<td>온도 센서</td>
+<td>DS18B20 방수형</td>
+<td>4 (여분 1)</td>
+<td>고내 상·하, 외기</td>
+</tr>
+<tr>
+<td>풀업 저항</td>
+<td>4.7 kΩ</td>
+<td>1</td>
+<td>센서 통신선(1-Wire)</td>
+</tr>
+<tr>
+<td>도어 센서</td>
+<td>리드 스위치 + 자석</td>
+<td>1</td>
+<td>door_open</td>
+</tr>
+<tr>
+<td>전력 스위칭</td>
+<td>로직 레벨 MOSFET 모듈 (3.3 V 구동, 10 A 이상)</td>
+<td>1</td>
+<td>펠티어 pwm 구동</td>
+</tr>
+<tr>
+<td>전류·전압 센서</td>
+<td>INA226 계열, 6 A 이상 측정 가능한 션트</td>
+<td>1</td>
+<td>current_mA · voltage_mV</td>
+</tr>
+<tr>
+<td>전원</td>
+<td>12 V SMPS 10 A 이상 + 퓨즈</td>
+<td>1</td>
+<td>펠티어·팬 전원</td>
+</tr>
+<tr>
+<td>제어기</td>
+<td>라즈베리파이 4 또는 5 + microSD</td>
+<td>1</td>
+<td>수집·제어</td>
+</tr>
+<tr>
+<td>배선</td>
+<td>브레드보드, 점퍼선, 18 AWG 이상 전원선, 단자대</td>
+<td>—</td>
+<td>연결</td>
+</tr>
+<tr>
+<td>화물</td>
+<td>500 mL 생수병 4–6개</td>
+<td>—</td>
+<td>열부하</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2-2. 설계</h3>
+<ul>
+<li>배치도: 펠티어는 측벽에 40 × 40 mm 구멍을 내어 장착. 센서 위치는 시뮬레이터와 같게 (상부 뚜껑 아래 약 5 cm, 하부 바닥 위 약 2 cm, 외기는 박스 밖)</li>
+<li>배선도: 아래 장치 구성도 기준으로 GPIO 번호까지 표기</li>
+<li>안전 수칙<ul>
+<li>고온측 팬이 돌지 않는 상태에서 펠티어 전원 인가 금지 (수 초 안에 과열·파손)</li>
+<li>펠티어 전류 경로는 굵은 선과 퓨즈 사용, 라즈베리파이 GND와 12 V GND 공통 연결</li>
+<li>첫 통전은 낮은 pwm부터, 저온측 결로가 전자부품에 닿지 않게 배치</li>
+</ul>
+</li>
+</ul>
+<h3>장치 구성도</h3>
+
+<figure class="dia"><svg viewBox="0 0 760 360" role="img" aria-label="실물 장치 구성도"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ah"/></marker></defs><g class="cn"><path d="M220 96H292" marker-end="url(#ar)"/><path d="M220 192H292" marker-end="url(#ar)"/><path d="M220 296H292" marker-end="url(#ar)"/><path d="M380 260V228" marker-end="url(#ar)"/><path d="M468 308H540" marker-end="url(#ar)"/><path d="M468 188H500V276H540" marker-end="url(#ar)"/><path d="M638 260V228" marker-end="url(#ar)"/><path d="M638 156V140" marker-end="url(#ar)"/></g><text x="256" y="288" class="lb" text-anchor="middle">12 V</text><text x="388" y="248" class="lb">I2C</text><text x="520" y="300" class="lb" text-anchor="middle">12 V</text><text x="474" y="180" class="lb">PWM</text><text x="646" y="248" class="lb">구동 전류</text><rect x="24" y="60" width="196" height="72" class="bx"/><text x="40" y="84" class="nm">DS18B20 × 3</text><text x="40" y="100" class="ln">고내 상·하, 외기</text><text x="40" y="116" class="ln">GPIO4 · 1-Wire</text><rect x="24" y="156" width="196" height="72" class="bx"/><text x="40" y="180" class="nm">리드 스위치</text><text x="40" y="196" class="ln">뚜껑 개폐 → door_open</text><text x="40" y="212" class="ln">GPIO 입력</text><rect x="24" y="260" width="196" height="72" class="bx"/><text x="40" y="284" class="nm">12 V SMPS</text><text x="40" y="300" class="ln">10 A 이상 · 퓨즈</text><text x="40" y="316" class="ln">펠티어·팬 전원</text><rect x="292" y="60" width="176" height="168" class="bx main"/><text x="308" y="84" class="nm">라즈베리파이</text><text x="308" y="104" class="ln ink">1 Hz 수집 · CSV 기록</text><text x="308" y="122" class="ln ink">온도 예측 · 이상감지</text><text x="308" y="140" class="ln ink">제어 규칙 → pwm 결정</text><rect x="292" y="260" width="176" height="72" class="bx"/><text x="308" y="284" class="nm">INA226</text><text x="308" y="300" class="ln">펠티어 전류·전압</text><text x="308" y="316" class="ln">current·voltage 컬럼</text><rect x="540" y="52" width="196" height="88" class="bx"/><text x="556" y="76" class="nm">방열판 + 12 V 팬</text><text x="556" y="92" class="ln">고온측 열 배출</text><text x="556" y="108" class="wn">팬 정지 상태 통전 금지</text><rect x="540" y="156" width="196" height="72" class="bx"/><text x="556" y="180" class="nm">TEC1-12706 펠티어</text><text x="556" y="196" class="ln">저온측 → 고내 냉각</text><text x="556" y="212" class="ln">측벽 40 × 40 mm 장착</text><rect x="540" y="260" width="196" height="72" class="bx"/><text x="556" y="284" class="nm">MOSFET 모듈</text><text x="556" y="300" class="ln">로직 레벨 · 10 A 이상</text><text x="556" y="316" class="ln">GPIO18 PWM 입력</text></svg><figcaption>센서·리드 스위치·INA226이 라즈베리파이로 들어가고, 라즈베리파이의 PWM이 MOSFET을 거쳐 펠티어를 구동함. CSV의 모든 컬럼이 어느 부품에서 나오는지 대응됨.</figcaption></figure>
+
+<h3>2-3. 조립·단위 시험</h3>
+<ul>
+<li class="task"><span class="cb" aria-hidden="true"></span>센서 3개 값 동시 읽기 (실온에서 서로 0.5 ℃ 이내)</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>리드 스위치 열림·닫힘 인식</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>pwm 0 → 64 → 128 → 255 단계별 전류·전압 기록</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>고온측 방열판 온도 확인 (최대 출력 10분 후 손으로 만질 수 있는 수준)</li>
+</ul>
+<h3>2-4. 수집 로거</h3>
+<ul>
+<li>Python, 1 Hz, 공통 사항의 CSV 컬럼 그대로 기록</li>
+<li><code>scenario</code> 컬럼은 비워 두고 시작·종료 시각을 실험 일지에 기록 (나중에 라벨로 병합)</li>
+<li>장시간 수집 중 중단돼도 이어서 기록되도록 파일 이어쓰기</li>
+</ul>
+<h3>2-5. 실측 시나리오</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>방법</th>
+<th>시간</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>냉각 시작</td>
+<td>실온에서 목표 5 ℃, pid</td>
+<td>1–2 h</td>
+</tr>
+<tr>
+<td>정상 유지</td>
+<td>목표 도달 후 그대로 유지</td>
+<td>2 h 이상</td>
+</tr>
+<tr>
+<td>문 열림</td>
+<td>60초 열기 3회, 20분 간격</td>
+<td>1 h</td>
+</tr>
+<tr>
+<td>화물 투입</td>
+<td>실온 생수병 2개 투입</td>
+<td>1 h</td>
+</tr>
+<tr>
+<td>팬 정지</td>
+<td>고온측 팬 5분 정지 후 복구, 방열판 과열 시 즉시 중단</td>
+<td>30 min</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2-6. 시뮬레이터 대비 비교</h3>
+<ul>
+<li>냉각 곡선(목표 도달 시간), 문 열림 후 회복 시간, 정상 유지 평균 pwm을 시뮬레이터와 나란히 비교한 표</li>
+<li>차이가 큰 항목은 원인 추정 (단열, 펠티어 효율, 센서 위치 등)</li>
+</ul>
+<h3>2-7. 모델 적용·제어 데모</h3>
+<ul>
+<li>1주차 모델을 실측 데이터에 그대로 적용한 MAE → 실측 일부로 재학습 후 MAE, 두 값 비교</li>
+<li>라즈베리파이에서 예측 기반 규칙 실행, 문 열림 시나리오에서 pid 단독과 비교 (8 ℃ 초과 시간)</li>
+</ul>
+<h3>2–4주차 제출물</h3>
+<ul>
+<li class="task"><span class="cb" aria-hidden="true"></span>장치 사진, 배치도, 배선도</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>실측 CSV + 실험 일지</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>시뮬레이터 대비 비교표</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>모델 적용 결과표 (그대로 적용 / 재학습)</li>
+<li class="task"><span class="cb" aria-hidden="true"></span>제어 데모 영상 (문 열림 시나리오)</li>
+</ul>
+<h2>제출·질의</h2>
+<ul>
+<li>제출: 공유 폴더에 <code>week1/</code>, <code>week2-4/</code>로 업로드, 단계가 끝날 때마다 정기 회의에서 5분 발표</li>
+<li>질의: 막히는 지점은 바로 공유, 30분 이상 혼자 붙잡지 않기</li>
+</ul>
+</main>
+<footer>3조 과제</footer>
+</body></html>
